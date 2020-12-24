@@ -1,0 +1,34 @@
+@font-face {
+    font-family: PWHappyChristmas;
+    src: url(fonts/PWHappyChristmas.ttf);
+    font-weight: bold;
+}
+
+body {
+    overflow: hidden;
+}
+
+h1 {
+    font-family: PWHappyChristmas;
+}
+
+p {
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 5vw;
+    font-size: 5vw;
+}
+
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 601px) {
+    h1 {
+        font-size: 9em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 7.5em;
+    }
+}
