@@ -30,8 +30,8 @@ function startSnow(){
     deviceorientation: true,
     image: "images/flake.png",
     round: true,
-    minSize: 10,
-    maxSize:25
+    minSize: 15,
+    maxSize: 30
   });
 }
 
