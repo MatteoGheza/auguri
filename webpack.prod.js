@@ -22,9 +22,9 @@ module.exports = merge(common, {
     optimization: {
         mergeDuplicateChunks: true,
         minimize: true,
-        minimizer: [new UglifyJsPlugin({
+        /*minimizer: [new UglifyJsPlugin({
           parallel: true,
           extractComments: true
-        })]
+        })]*/
     }
 });
