@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "prod": "webpack --config webpack.prod.js",
-    "prod_release": "webpack --config webpack.prod.js; gh-pages -d dist",
+    "prod_release": "webpack --config webpack.prod.js && gh-pages -d dist",
     "dev": "webpack --config webpack.config.js",
     "dev_server": "webpack serve",
     "debug_bundle": "webpack --config webpack.debug_bundle.js"
