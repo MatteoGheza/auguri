@@ -40,7 +40,7 @@ function stopSnow(){
 }
 
 $( document ).ready(function() {
-  console.log( "Buon Natale da Matteo. Per vedere il codice sorgente della pagina e le configurazioni usate per WebPack, guarda il codice su Github a " );
+  console.log( "Buon Natale da Matteo. Per vedere il codice sorgente della pagina e le configurazioni usate per WebPack, guarda il codice su Github a https://github.com/Matteogheza/auguri" );
   if(!urlParams.has('noSnow')) startSnow();
 });
 
