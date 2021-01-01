@@ -47,7 +47,7 @@ jobs:
           path: dist
       - name: Deploy app
         run: |
-          npm install --global gh-pages
+          sudo npm install --global gh-pages
           gh-pages -d dist
         
 
