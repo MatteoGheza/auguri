@@ -4,16 +4,12 @@ import 'jquery';
 import 'jquery-snowfall';
 import { promisifyWebOS } from 'webostv-as-promised';
 import { default as filter } from 'leo-profanity';
-import {default as profanitylist} from './profanitylist.js';
+import { default as profanitylist } from './profanitylist.js';
 
 console.log("Bundle date: "+process.env.BUNDLE_DATE);
 
-filter.loadDictionary('it');
-filter.loadDictionary('en');
-filter.add(profanitylist);
-console.log("Loaded "+filter.list().length+" bad words");
-
 const urlParams = new URLSearchParams(window.location.search);
+console.log(urlParams);
 
 if(window.webOS !== undefined){ // TODO: better WebOS TV support
   const promisedWebOS = promisifyWebOS(window.webOS); 
@@ -39,8 +35,21 @@ function stopSnow(){
   $(document).snowfall('clear');
 }
 
+if(urlParams.has('name') || urlParams.has('prefix')){
+  filter.loadDictionary('it');
+  filter.loadDictionary('en');
+  filter.add(profanitylist);
+  console.log("Loaded "+filter.list().length+" bad words");
+}
+
 $( document ).ready(function() {
-  console.log( "Buon Natale da Matteo. Per vedere il codice sorgente della pagina e le configurazioni usate per WebPack, guarda il codice su Github a https://github.com/Matteogheza/auguri" );
+  var prefix = "Da";
+  var footerName = "Matteo";
+  if(urlParams.has('prefix')) prefix = filter.clean(urlParams.get("prefix"));
+  if(!prefix.endsWith(" ")) prefix += " ";
+  if(urlParams.has('name')) footerName = filter.clean(urlParams.get("name"));
+  $("#footer").text(prefix+footerName);
+  console.log( "Buone feste da Matteo. Per vedere il codice sorgente della pagina e le configurazioni usate per WebPack, guarda il codice su Github a https://github.com/Matteogheza/auguri" );
   if(!urlParams.has('noSnow')) startSnow();
 });
 
