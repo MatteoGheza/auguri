@@ -2,9 +2,13 @@ name: CI testing build
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - '**'
+      - '!gh-pages'
   pull_request:
-    branches: [ master ]
+    branches:
+      - '**'
+      - '!gh-pages'
 
 jobs:
   build:
@@ -15,6 +19,8 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14'
+    - name: Run npm install
+      run: npm install
     - name: Run webpack prod build
       run: npm run debug_bundle
     - name: Upload a Build Artifact
