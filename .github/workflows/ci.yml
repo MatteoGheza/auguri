@@ -41,16 +41,18 @@ jobs:
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
       - name: Download a Build Artifact
         uses: actions/download-artifact@v2.0.7
         with:
           name: Prod Build
           path: dist
-      - name: Deploy app
-        run: |
-          sudo npm install --global gh-pages
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          gh-pages -d dist
-        
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
+          CLEAN: true
 
