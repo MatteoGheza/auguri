@@ -1,6 +1,5 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.config.js');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = merge(common, {
@@ -46,10 +45,6 @@ module.exports = merge(common, {
     ],
     optimization: {
         mergeDuplicateChunks: true,
-        minimize: true,
-        /*minimizer: [new UglifyJsPlugin({
-          parallel: true,
-          extractComments: true
-        })]*/
+        minimize: true
     }
 });
